@@ -1,16 +1,16 @@
+// App.js
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import BigCardForm from "./components/BigCardForm";
+import SelectCardForm from "./components/SelectCardForm";
 
-import './App.css'
-import BigCardForm from './components/BigCardForm'
-
-
-function App() {
- 
-
+const App = () => {
   return (
-    <>
-     <BigCardForm />
-    </>
-  )
-}
+    <Routes>
+      <Route path="/" element={<BigCardForm />} />
+      <Route path="/select-card" element={<SelectCardForm />} />
+    </Routes>
+  );
+};
 
-export default App
+export default App;

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 const BigCardForm = () => {
   const [formData, setFormData] = useState({
@@ -57,11 +56,9 @@ const BigCardForm = () => {
 
             {/* Item 2 */}
             <div className="flex items-start space-x-4">
-                <Link to="/select-card">
               <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
                 2
               </button>
-              </Link>
               <div>
                 <p className="text-sm text-left text-gray-300"> STEP 2</p>
                 <p className="text-sm font-semibold text-white">SELECT PLAN</p>
@@ -144,7 +141,7 @@ const BigCardForm = () => {
 
             {/* Phone Field */}
             <div>
-              <label className="block text-sm font-medium  text-sky-800 mb-1">
+              <label className="block text-sm font-medium text-sky-800 mb-1">
                 Phone Number
               </label>
               <input
@@ -154,7 +151,7 @@ const BigCardForm = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 className={`w-full px-3 py-2 border ${
-                  errors.phone ? "border-red-500" : "border-gray-300 "
+                  errors.phone ? "border-red-500" : "border-gray-300"
                 } rounded-md focus:ring-blue-500 focus:border-blue-500`}
               />
               {errors.phone && (
@@ -165,7 +162,7 @@ const BigCardForm = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="text-sm py-2   px-3 bg-sky-800 float-end text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto m"
+              className="mt-4 text-sm py-2 px-4 bg-sky-800 text-white font-medium rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
             >
               Next Step
             </button>
