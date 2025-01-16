@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
-const SelectCardForm = () => {
-    const [isYearly, setIsYearly] = useState(false);
+const PickAddOn = () => {
+  const [selectedAddOns, setSelectedAddOns] = useState([]);
 
-    const handleToggle = () => {
-      setIsYearly(!isYearly);
-    };
+  const handleToggleAddOn = (addOn) => {
+    setSelectedAddOns((prev) => {
+      if (prev.includes(addOn)) {
+        return prev.filter((item) => item !== addOn);
+      } else {
+        return [...prev, addOn];
+      }
+    });
+  };
+
+  const addOns = [
+    {
+      id: "addon1",
+      title: "Online Service",
+      description: "Access to multiplayer games",
+      price: "+$1/mo",
+    },
+    {
+      id: "addon2",
+      title: "Larger Storage",
+      description: "Extra 1TB of cloud save",
+      price: "+$2/mo",
+    },
+    {
+      id: "addon3",
+      title: "Customizable Profile",
+      description: "Custom theme on your profile",
+      price: "+$2/mo",
+    },
+  ];
+
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl flex flex-col lg:flex-row">
@@ -36,7 +63,7 @@ const SelectCardForm = () => {
 
             {/* Item 2 */}
             <div className="flex items-start space-x-4">
-                <Link to="/select-card">
+            <Link to="/select-card">
               <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
                 2
               </button>
@@ -49,11 +76,9 @@ const SelectCardForm = () => {
 
             {/* Item 3 */}
             <div className="flex items-start space-x-4">
-                <Link to="/pick-addons">
               <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
                 3
               </button>
-              </Link>
               <div>
                 <p className="text-sm text-left text-gray-300"> STEP 3</p>
                 <p className="text-sm font-semibold text-white">ADD-ONS</p>
@@ -73,69 +98,38 @@ const SelectCardForm = () => {
           </div>
         </div>
 
-        {/* Right Section: Cards */}
+        {/* Right Section: Add-Ons */}
         <div className="lg:w-1/2 w-full p-8 text-left flex flex-col -ml-20 mt-7">
-          <h2 className="text-2xl font-semibold text-sky-800 mb-2">
-            Select your plan
-          </h2>
-          <p className="text-gray-600 mb-6">
-          You have the option of monthly or yearly billing.
-          </p>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-2">Pick Add-Ons</h2>
+          <p className="text-gray-600 mb-6">Add-ons help enhance your gaming experience.</p>
 
-          {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {/* Card 1 */}
-            <Link
-              to="/plan/1"  // Example link
-              className="flex flex-col items-center border border-gray-300 rounded-lg p-4 hover:border-sky-800  hover:shadow-lg transition duration-300"
-            >
-              <img src="/src/assets/icon-arcade.svg" className="-ml-10" alt="" srcset="" />
-              <p className="text-sm font-semibold mt-20 -ml-8 text-sky-800">Arcade</p>
-              <p className="text-xs text-gray-600 -ml-10">$9/mo</p>
-            </Link>
-
-            {/* Card 2 */}
-            <Link
-              to="/plan/2"  // Example link
-              className="flex flex-col items-center border border-gray-300 rounded-lg p-4 hover:border-sky-800 hover:shadow-lg transition duration-300"
-            >
-              <img src="/src/assets/icon-advanced.svg" className="-ml-10" alt="" srcset="" />
-              <p className="text-sm font-semibold mt-20 -ml-5 text-sky-800">Advanced</p>
-              <p className="text-xs text-gray-600 -ml-10">$12/mo</p>
-            </Link>
-
-            {/* Card 3 */}
-            <Link
-              to="/plan/3"  // Example link
-              className="flex flex-col items-center border border-gray-300 rounded-lg p-4 hover:border-sky-800  hover:shadow-lg transition duration-300"
-            >
-              <img src="/src/assets/icon-pro.svg" className="-ml-10" alt="" srcset="" />
-              <p className="text-sm font-semibold mt-20 -ml-14 text-sky-800">Pro</p>
-              <p className="text-xs text-gray-600 -ml-10">$15/mo</p>
-            </Link>
+          {/* Add-Ons List */}
+          <div className="space-y-4">
+            {addOns.map((addOn) => (
+              <div
+                key={addOn.id}
+                className={`flex items-center justify-between border p-4 rounded-lg cursor-pointer hover:border-blue-500 transition duration-300 ${
+                  selectedAddOns.includes(addOn.id) ? "border-blue-500" : "border-gray-300"
+                }`}
+                onClick={() => handleToggleAddOn(addOn.id)}
+              >
+                <div className="flex items-center space-x-4">
+                  <input
+                    type="checkbox"
+                    checked={selectedAddOns.includes(addOn.id)}
+                    onChange={() => handleToggleAddOn(addOn.id)}
+                    className="w-5 h-5 border-gray-300 rounded-md text-blue-600 focus:ring-blue-500"
+                  />
+                  <div>
+                    <p className="text-sm font-semibold text-gray-800">{addOn.title}</p>
+                    <p className="text-xs text-gray-600">{addOn.description}</p>
+                  </div>
+                </div>
+                <p className="text-sm font-semibold text-blue-600">{addOn.price}</p>
+              </div>
+            ))}
           </div>
-
-          <div className="flex items-center justify-center mt-8 bg-slate-200 rounded-md space-x-4">
-      {/* Monthly label */}
-      <p className={`text-sm ${!isYearly ? 'text-sky-800 font-semibold' : 'text-gray-500'}`}>Monthly</p>
-
-      {/* Toggle Switch */}
-      <div
-        className="relative w-16 h-8 cursor-pointer rounded-full bg-sky-800"
-        onClick={handleToggle}
-      >
-        <div
-          className={`absolute top-0 left-0 w-8 h-8 bg-white rounded-full shadow-md transition-all duration-300 ease-in-out ${
-            isYearly ? 'transform translate-x-8' : ''
-          }`}
-        ></div>
-      </div>
-
-      {/* Yearly label */}
-      <p className={`text-sm ${isYearly ? 'text-sky-800 font-semibold' : 'text-gray-500'}`}>Yearly</p>
-    </div>
-
-    <div className="flex flex-row mt-28">
+          <div className="flex flex-row mt-28">
         <div>
             <Link to="/" className="">Go Back</Link>
         </div>
@@ -152,4 +146,4 @@ const SelectCardForm = () => {
   );
 };
 
-export default SelectCardForm;
+export default PickAddOn;

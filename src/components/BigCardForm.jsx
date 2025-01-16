@@ -70,9 +70,11 @@ const BigCardForm = () => {
 
             {/* Item 3 */}
             <div className="flex items-start space-x-4">
+                <Link to="/pick-addons">
               <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
                 3
               </button>
+              </Link>
               <div>
                 <p className="text-sm text-left text-gray-300"> STEP 3</p>
                 <p className="text-sm font-semibold text-white">ADD-ONS</p>
@@ -165,7 +167,7 @@ const BigCardForm = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="text-sm py-2   px-3 bg-sky-800 float-end text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto m"
+              className="text-sm py-2   px-3 bg-sky-800  float-end text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto m"
             >
               Next Step
             </button>
