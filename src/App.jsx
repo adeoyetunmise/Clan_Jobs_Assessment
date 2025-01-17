@@ -6,6 +6,7 @@ import SelectCardForm from "./components/SelectCardForm";
 import BigCardForm from "./components/BigCardForm";
 import FinishingUp from "./components/FinishingUp";
 import PickAddOn from "./components/PickAddOn";
+import ThankYou from "./components/ThankYou";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/select-card" element={<SelectCardForm />} />
           <Route path="/pick-addons" element={<PickAddOn />} />
           <Route path="/finish-up" element={<FinishingUp />} />
+          <Route path="/thank-you" element={<ThankYou />} />
         </Routes>
         </Router>
       

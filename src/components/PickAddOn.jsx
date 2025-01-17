@@ -50,79 +50,90 @@ const PickAddOn = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl flex flex-col lg:flex-row">
-        {/* Left Section: Image with Numbers and Paragraphs */}
-        <div className="lg:w-1/2 mb-4 lg:mb-0 relative">
+    <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen bg-gray-100">
+      {/* Mobile Layout */}
+      <div className="lg:hidden w-full">
+        <div className="relative">
+          <img
+            src="/src/assets/bg-sidebar-mobile.svg"
+            alt="Mobile Sidebar"
+            className="w-full h-auto"
+          />
+          <div className="absolute inset-x-0 top-4 flex justify-center space-x-4">
+            {[1, 2, 3, 4].map((step) => (
+              <Link
+                key={step}
+                to={
+                  step === 1
+                    ? "/"
+                    : step === 2
+                    ? "/select-card"
+                    : step === 3
+                    ? "/pick-addons"
+                    : "/finish-up"
+                }
+              >
+                <button
+                  className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full bg-sky-800 hover:bg-blue-300 hover:text-black"
+                >
+                  {step}
+                </button>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl flex flex-col lg:flex-row relative">
+        {/* Left Section: Sidebar */}
+        <div className="hidden lg:block lg:w-1/2 mb-4 lg:mb-0 relative">
           <img
             src="/src/assets/bg-sidebar-desktop.svg"
-            alt="Placeholder"
+            alt="Desktop Sidebar"
             className="rounded-lg object-cover"
           />
-
-          {/* Numbers and Paragraphs */}
           <div className="absolute top-8 left-8 flex flex-col space-y-8">
-            {/* Item 1 */}
-            <div className="flex items-start space-x-4">
-              <Link to="/">
-                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
-                  1
-                </button>
-              </Link>
-              <div>
-                <p className="text-sm text-left text-gray-300">STEP 1</p>
-                <p className="text-sm font-semibold text-white">YOUR INFO</p>
+            {[1, 2, 3, 4].map((step) => (
+              <div className="flex items-start space-x-4" key={step}>
+                <Link to={
+                  step === 1
+                    ? "/"
+                    : step === 2
+                    ? "/select-card"
+                    : step === 3
+                    ? "/pick-addons"
+                    : "/finish-up"
+                }>
+                  <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
+                    {step}
+                  </button>
+                </Link>
+                <div>
+                  <p className="text-sm text-left text-gray-300">STEP {step}</p>
+                  <p className="text-sm font-semibold text-white">
+                    {[
+                      "YOUR INFO",
+                      "SELECT PLAN",
+                      "ADD-ONS",
+                      "SUMMARY",
+                    ][step - 1]}
+                  </p>
+                </div>
               </div>
-            </div>
-
-            {/* Item 2 */}
-            <div className="flex items-start space-x-4">
-              <Link to="/select-card">
-                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
-                  2
-                </button>
-              </Link>
-              <div>
-                <p className="text-sm text-left text-gray-300">STEP 2</p>
-                <p className="text-sm font-semibold text-white">SELECT PLAN</p>
-              </div>
-            </div>
-
-            {/* Item 3 */}
-            <div className="flex items-start space-x-4">
-              <Link to="/pick-addons">
-                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
-                  3
-                </button>
-              </Link>
-              <div>
-                <p className="text-sm text-left text-gray-300">STEP 3</p>
-                <p className="text-sm font-semibold text-white">ADD-ONS</p>
-              </div>
-            </div>
-
-            {/* Item 4 */}
-            <div className="flex items-start space-x-4">
-              <Link to="/finish-up">
-                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
-                  4
-                </button>
-              </Link>
-              <div>
-                <p className="text-sm text-left text-gray-300">STEP 4</p>
-                <p className="text-sm font-semibold text-white">SUMMARY</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Right Section: Add-Ons */}
-        <div className="lg:w-1/2 w-full p-8 text-left flex flex-col -ml-20 mt-7">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">Pick Add-Ons</h2>
-          <p className="text-gray-600 mb-6">Add-ons help enhance your gaming experience.</p>
+        <div className="bg-white shadow-lg lg:shadow-none -mt-20 lg:mt-0 rounded-lg p-6 w-full lg:-ml-24 max-w-lg">
+          <h2 className="text-2xl font-semibold text-sky-800 mb-2">Pick Add-Ons</h2>
+          <p className="text-gray-600 mb-6">
+            Add-ons help enhance your gaming experience.
+          </p>
 
           {/* Add-Ons List */}
-          <div className="space-y-4">
+          <div className="space-y-4 ">
             {addOns.map((addOn) => (
               <div
                 key={addOn.id}
@@ -141,22 +152,28 @@ const PickAddOn = () => {
                     className="w-5 h-5 border-gray-300 rounded-md text-blue-600 focus:ring-blue-500"
                   />
                   <div>
-                    <p className="text-sm font-semibold text-gray-800">{addOn.title}</p>
-                    <p className="text-xs text-gray-600">{addOn.description}</p>
+                    <p className="text-xs lg:text-lg font-semibold text-gray-800">
+                      {addOn.title}
+                    </p>
+                    <p className="text-xs lg:text-sm whitespace-nowrap text-gray-600">{addOn.description}</p>
                   </div>
                 </div>
-                <p className="text-sm font-semibold text-blue-600">{addOn.price}</p>
+                <p className="text-xs lg:text-sm -ml-9 -mt-4 font-semibold text-blue-600">
+                  {addOn.price}
+                </p>
               </div>
             ))}
           </div>
-          <div className="flex flex-row mt-28">
-            <div>
-              <Link to="/select-card" className="">Go Back</Link>
-            </div>
+
+          {/* Navigation Buttons */}
+          <div className="flex flex-row mt-10">
+            <Link to="/select-card" className="text-sm text-gray-600">
+              Go Back
+            </Link>
             <button
               type="button"
               onClick={handleNextStep}
-              className="text-sm py-2 px-3 bg-sky-800 float-right text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto"
+              className="text-sm py-2 px-3 bg-sky-800 text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto"
             >
               Next Step
             </button>
