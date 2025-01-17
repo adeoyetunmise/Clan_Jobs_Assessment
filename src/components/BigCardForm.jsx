@@ -40,7 +40,7 @@ const BigCardForm = () => {
         <div className="relative">
           {/* Mobile Image */}
           <img
-            src="/src/assets/bg-sidebar-mobile.svg"
+            src="/assets/bg-sidebar-mobile.svg"
             alt="Mobile Sidebar"
             className="w-full h-auto"
           />
