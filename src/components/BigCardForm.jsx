@@ -22,7 +22,6 @@ const BigCardForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      alert("Form submitted successfully!");
       navigate("/select-card");
     }
   };
@@ -40,7 +39,7 @@ const BigCardForm = () => {
         <div className="relative">
           {/* Mobile Image */}
           <img
-            src="/assets/bg-sidebar-mobile.svg"
+            src="/images/bg-sidebar-mobile.svg"
             alt="Mobile Sidebar"
             className="w-full h-auto"
           />
@@ -76,7 +75,7 @@ const BigCardForm = () => {
         {/* Left Section for Desktop */}
         <div className="hidden lg:block lg:w-1/2 mb-4 lg:mb-0 relative">
           <img
-            src="/src/assets/bg-sidebar-desktop.svg"
+            src="/images/bg-sidebar-desktop.svg"
             alt="Placeholder"
             className="rounded-lg object-cover"
           />

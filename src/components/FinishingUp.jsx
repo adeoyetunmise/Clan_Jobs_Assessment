@@ -52,7 +52,7 @@ const totalPrice = totalAddOnPrice + planPrice;
       <div className="lg:hidden w-full">
         <div className="relative">
           <img
-            src="/src/assets/bg-sidebar-mobile.svg"
+            src="/images/bg-sidebar-mobile.svg"
             alt="Mobile Sidebar"
             className="w-full h-auto"
           />
@@ -86,7 +86,7 @@ const totalPrice = totalAddOnPrice + planPrice;
         {/* Desktop Sidebar */}
         <div className="hidden lg:block lg:w-1/2 mb-4 lg:mb-0 relative">
           <img
-            src="/src/assets/bg-sidebar-desktop.svg"
+            src="/images/bg-sidebar-desktop.svg"
             alt="Desktop Sidebar"
             className="rounded-lg object-cover"
           />

@@ -7,7 +7,7 @@ const ThankYou = () => {
       {/* Mobile Background Image */}
       <div className="lg:hidden absolute -top-20 left-0 w-full z-0">
         <img
-          src="/src/assets/bg-sidebar-mobile.svg" // Mobile Background Image
+          src="/images/bg-sidebar-mobile.svg" // Mobile Background Image
           alt="Mobile Sidebar"
           className="w-full h-72 object-contain mx-auto"
         />
@@ -45,7 +45,7 @@ const ThankYou = () => {
         <div className="hidden lg:block lg:w-1/2 mb-4 lg:mb-0 relative">
           {/* Desktop Background Image */}
           <img
-            src="/src/assets/bg-sidebar-desktop.svg" // Desktop Background Image
+            src="/images/bg-sidebar-desktop.svg" // Desktop Background Image
             alt="Desktop Sidebar"
             className="rounded-lg object-contain"
           />
@@ -83,7 +83,7 @@ const ThankYou = () => {
         <div className="lg:w-1/2 w-full p-4 mt-20 lg:p-8 flex flex-col items-center justify-center">
           {/* Space for Logo */}
           <img
-            src="/src/assets/icon-thank-you.svg" // Replace with your logo's path
+            src="/images/icon-thank-you.svg" // Replace with your logo's path
             alt="Logo"
             className="w-16 h-16 lg:w-24 lg:h-24 mb-6"
           />
