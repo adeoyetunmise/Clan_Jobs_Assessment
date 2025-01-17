@@ -14,7 +14,7 @@ const ThankYou = () => {
       </div>
 
       {/* Mobile Steps on Top of the Image */}
-      <div className="lg:hidden absolute top-8 left-1/2 transform -translate-x-1/2 flex justify-around space-x-4 z-10">
+      <div className="lg:hidden absolute top-2 left-1/2 transform -translate-x-1/2 flex justify-around space-x-4 z-10">
         {[1, 2, 3, 4].map((step) => (
           <Link
             key={step}
@@ -36,7 +36,7 @@ const ThankYou = () => {
       </div>
 
       {/* Card that overlays the image */}
-      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl z-10 flex flex-col lg:flex-row relative mt-20 lg:mt-0">
+      <div className="bg-white rounded-lg shadow-lg p-6 w-full  max-w-4xl z-10 flex flex-col lg:flex-row relative mt-1 lg:mt-0">
         
         {/* Desktop Layout with Image */}
         <div className="hidden lg:block lg:w-1/2 mb-4 lg:mb-0 relative">
