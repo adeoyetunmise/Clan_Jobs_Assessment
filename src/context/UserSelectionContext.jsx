@@ -5,7 +5,7 @@ const UserSelectionContext = createContext();
 export const useUserSelection = () => useContext(UserSelectionContext);
 
 export const UserSelectionProvider = ({ children }) => {
-  // Get the selections from localStorage or initialize them as empty
+  
   const initialState = JSON.parse(localStorage.getItem("userSelection")) || {
     plan: null,
     addOns: [],
@@ -13,14 +13,14 @@ export const UserSelectionProvider = ({ children }) => {
 
   const [selection, setSelection] = useState(initialState);
 
-  // Save selections to localStorage whenever they change
+  
   useEffect(() => {
-    console.log("Saving selection to localStorage:", selection); // Debugging log
+    console.log("Saving selection to localStorage:", selection); 
     localStorage.setItem("userSelection", JSON.stringify(selection));
   }, [selection]);
 
   const updateSelection = (newSelection) => {
-    console.log("Updating selection:", newSelection); // Debugging log
+    console.log("Updating selection:", newSelection);
     setSelection((prevSelection) => ({
       ...prevSelection,
       ...newSelection,

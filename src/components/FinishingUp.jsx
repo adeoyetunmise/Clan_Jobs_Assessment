@@ -32,13 +32,12 @@ const FinishingUp = () => {
   }, 0);
 
   const planPrice = selection.plan?.price
-  ? typeof selection.plan.price === "string"
-    ? parseInt(selection.plan.price.replace(/[^0-9]/g, ""), 10)
-    : selection.plan.price
-  : 0;
+    ? typeof selection.plan.price === "string"
+      ? parseInt(selection.plan.price.replace(/[^0-9]/g, ""), 10)
+      : selection.plan.price
+    : 0;
 
-const totalPrice = totalAddOnPrice + planPrice;
-
+  const totalPrice = totalAddOnPrice + planPrice;
 
   const navigate = useNavigate();
 
@@ -70,9 +69,7 @@ const totalPrice = totalAddOnPrice + planPrice;
                     : "/finish-up"
                 }
               >
-                <button
-                  className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full  hover:bg-blue-300 hover:text-black"
-                >
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full  hover:bg-blue-300 hover:text-black">
                   {step}
                 </button>
               </Link>
@@ -111,7 +108,11 @@ const totalPrice = totalAddOnPrice + planPrice;
                 <div>
                   <p className="text-sm text-gray-300">STEP {step}</p>
                   <p className="text-sm font-semibold text-white">
-                    {["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"][step - 1]}
+                    {
+                      ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"][
+                        step - 1
+                      ]
+                    }
                   </p>
                 </div>
               </div>
@@ -121,8 +122,12 @@ const totalPrice = totalAddOnPrice + planPrice;
 
         {/* Summary Section */}
         <div className="bg-white shadow-lg lg:shadow-none -mt-20 lg:mt-0 rounded-lg p-6 w-full lg:-ml-24 max-w-lg">
-          <h2 className="text-2xl font-semibold text-sky-800 mb-2">Finishing Up</h2>
-          <p className="text-gray-600 mb-6">Double-check everything before confirming.</p>
+          <h2 className="text-2xl font-semibold text-sky-800 mb-2">
+            Finishing Up
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Double-check everything before confirming.
+          </p>
 
           {/* Plan Details */}
           <div className="mb-6">
@@ -131,10 +136,14 @@ const totalPrice = totalAddOnPrice + planPrice;
                 {selection.plan?.name}
               </p>
               <p className="text-sm font-semibold text-gray-800">
-                ${selection.plan?.price}/{selection.plan?.type === "Yearly" ? "yr" : "mo"}
+                ${selection.plan?.price}/
+                {selection.plan?.type === "Yearly" ? "yr" : "mo"}
               </p>
             </div>
-            <Link to="/select-card" className="text-blue-600 text-sm hover:underline">
+            <Link
+              to="/select-card"
+              className="text-blue-600 text-sm hover:underline"
+            >
               Change
             </Link>
           </div>
@@ -145,11 +154,16 @@ const totalPrice = totalAddOnPrice + planPrice;
               selectedAddOns.map((addOnId) => {
                 const addOn = getAddOnDetails(addOnId);
                 return (
-                  <div key={addOnId} className="flex justify-between items-start">
+                  <div
+                    key={addOnId}
+                    className="flex justify-between items-start"
+                  >
                     <p className="text-sm font-semibold text-gray-800">
                       {addOn.title}
                     </p>
-                    <p className="text-sm font-semibold text-gray-800">{addOn.price}</p>
+                    <p className="text-sm font-semibold text-gray-800">
+                      {addOn.price}
+                    </p>
                   </div>
                 );
               })
@@ -160,7 +174,9 @@ const totalPrice = totalAddOnPrice + planPrice;
 
           {/* Total Price */}
           <div className="flex justify-between border-t border-gray-300 pt-4">
-            <p className="text-sm font-semibold text-gray-800">Total (per month)</p>
+            <p className="text-sm font-semibold text-gray-800">
+              Total (per month)
+            </p>
             <p className="text-lg font-bold text-gray-900">+${totalPrice}/mo</p>
           </div>
 

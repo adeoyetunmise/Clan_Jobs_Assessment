@@ -59,9 +59,7 @@ const BigCardForm = () => {
                     : "/finish-up"
                 }
               >
-                <button
-                  className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black"
-                >
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
                   {step}
                 </button>
               </Link>

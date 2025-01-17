@@ -55,9 +55,7 @@ const SelectCardForm = () => {
                     : "/finish-up"
                 }
               >
-                <button
-                  className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black"
-                >
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
                   {step}
                 </button>
               </Link>
@@ -84,11 +82,13 @@ const SelectCardForm = () => {
                   </button>
                 </Link>
                 <div>
-                  <p className="text-sm text-left text-gray-300">
-                    STEP {step}
-                  </p>
+                  <p className="text-sm text-left text-gray-300">STEP {step}</p>
                   <p className="text-sm font-semibold text-white">
-                    {["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"][step - 1]}
+                    {
+                      ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"][
+                        step - 1
+                      ]
+                    }
                   </p>
                 </div>
               </div>

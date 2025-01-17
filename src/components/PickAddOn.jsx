@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUserSelection } from "../context/UserSelectionContext"; // assuming you're using context for user selection
+import { useUserSelection } from "../context/UserSelectionContext";
 
 const PickAddOn = () => {
   const navigate = useNavigate();
@@ -44,7 +44,6 @@ const PickAddOn = () => {
       return;
     }
 
-    // Update context with selected add-ons
     updateSelection({ addOns: selectedAddOns });
     navigate("/finish-up");
   };
@@ -73,9 +72,7 @@ const PickAddOn = () => {
                     : "/finish-up"
                 }
               >
-                <button
-                  className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full  hover:bg-blue-300 hover:text-black"
-                >
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full  hover:bg-blue-300 hover:text-black">
                   {step}
                 </button>
               </Link>
@@ -96,15 +93,17 @@ const PickAddOn = () => {
           <div className="absolute top-8 left-8 flex flex-col space-y-8">
             {[1, 2, 3, 4].map((step) => (
               <div className="flex items-start space-x-4" key={step}>
-                <Link to={
-                  step === 1
-                    ? "/"
-                    : step === 2
-                    ? "/select-card"
-                    : step === 3
-                    ? "/pick-addons"
-                    : "/finish-up"
-                }>
+                <Link
+                  to={
+                    step === 1
+                      ? "/"
+                      : step === 2
+                      ? "/select-card"
+                      : step === 3
+                      ? "/pick-addons"
+                      : "/finish-up"
+                  }
+                >
                   <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
                     {step}
                   </button>
@@ -112,12 +111,11 @@ const PickAddOn = () => {
                 <div>
                   <p className="text-sm text-left text-gray-300">STEP {step}</p>
                   <p className="text-sm font-semibold text-white">
-                    {[
-                      "YOUR INFO",
-                      "SELECT PLAN",
-                      "ADD-ONS",
-                      "SUMMARY",
-                    ][step - 1]}
+                    {
+                      ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"][
+                        step - 1
+                      ]
+                    }
                   </p>
                 </div>
               </div>
@@ -127,7 +125,9 @@ const PickAddOn = () => {
 
         {/* Right Section: Add-Ons */}
         <div className="bg-white shadow-lg lg:shadow-none -mt-20 lg:mt-0 rounded-lg p-6 w-full lg:-ml-24 max-w-lg">
-          <h2 className="text-2xl font-semibold text-sky-800 mb-2">Pick Add-Ons</h2>
+          <h2 className="text-2xl font-semibold text-sky-800 mb-2">
+            Pick Add-Ons
+          </h2>
           <p className="text-gray-600 mb-6">
             Add-ons help enhance your gaming experience.
           </p>
@@ -155,7 +155,9 @@ const PickAddOn = () => {
                     <p className="text-xs lg:text-lg font-semibold text-gray-800">
                       {addOn.title}
                     </p>
-                    <p className="text-xs lg:text-sm whitespace-nowrap text-gray-600">{addOn.description}</p>
+                    <p className="text-xs lg:text-sm whitespace-nowrap text-gray-600">
+                      {addOn.description}
+                    </p>
                   </div>
                 </div>
                 <p className="text-xs lg:text-sm -ml-9 -mt-4 font-semibold text-blue-600">

@@ -1,7 +1,6 @@
-// src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { UserSelectionProvider } from "./context/UserSelectionContext";  // Correct import
+import { UserSelectionProvider } from "./context/UserSelectionContext"; 
 import SelectCardForm from "./components/SelectCardForm";
 import BigCardForm from "./components/BigCardForm";
 import FinishingUp from "./components/FinishingUp";

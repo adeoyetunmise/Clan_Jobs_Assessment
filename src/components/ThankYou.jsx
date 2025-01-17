@@ -7,9 +7,9 @@ const ThankYou = () => {
       {/* Mobile Background Image */}
       <div className="lg:hidden absolute top-0 left-0 w-full z-0">
         <img
-          src="/images/bg-sidebar-mobile.svg" // Mobile Background Image
+          src="/images/bg-sidebar-mobile.svg"
           alt="Mobile Sidebar"
-          className="w-full h-40 object-cover mx-auto" // Shortened image height
+          className="w-full h-40 object-cover mx-auto" 
         />
       </div>
 
@@ -37,12 +37,11 @@ const ThankYou = () => {
 
       {/* Card that overlays the image */}
       <div className="bg-white rounded-lg shadow-lg p-6 w-full  max-w-4xl z-10 flex flex-col lg:flex-row relative mt-1 lg:mt-0">
-        
         {/* Desktop Layout with Image */}
         <div className="hidden lg:block lg:w-1/2 mb-4 lg:mb-0 relative">
           {/* Desktop Background Image */}
           <img
-            src="/images/bg-sidebar-desktop.svg" // Desktop Background Image
+            src="/images/bg-sidebar-desktop.svg" 
             alt="Desktop Sidebar"
             className="rounded-lg object-cover"
           />
@@ -68,7 +67,11 @@ const ThankYou = () => {
                 <div>
                   <p className="text-sm text-left text-gray-300">STEP {step}</p>
                   <p className="text-sm font-semibold text-white">
-                    {["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"][step - 1]}
+                    {
+                      ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"][
+                        step - 1
+                      ]
+                    }
                   </p>
                 </div>
               </div>
@@ -80,16 +83,16 @@ const ThankYou = () => {
         <div className="lg:w-1/2 w-full p-4 mt-16 lg:p-8 flex lg:-ml-12 flex-col items-center justify-center">
           {/* Space for Logo */}
           <img
-            src="/images/icon-thank-you.svg" // Replace with your logo's path
+            src="/images/icon-thank-you.svg" 
             alt="Logo"
             className="w-20 h-20 lg:w-24 lg:h-24 mb-6"
           />
 
           {/* Centered Paragraph */}
           <p className="text-gray-600 text-center text-sm lg:text-lg">
-            Thanks for confirming your subscription! We hope you have fun
-            using our platform. If you ever need support, please feel free
-            to email us at support@loremgaming.com.
+            Thanks for confirming your subscription! We hope you have fun using
+            our platform. If you ever need support, please feel free to email us
+            at support@loremgaming.com.
           </p>
         </div>
       </div>
