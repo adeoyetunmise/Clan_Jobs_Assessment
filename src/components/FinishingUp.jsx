@@ -26,10 +26,18 @@ const FinishingUp = () => {
 
   const getAddOnDetails = (id) => addOns.find((addon) => addon.id === id);
 
-  const totalPrice = selectedAddOns.reduce((total, addOnId) => {
+  // Calculate total price, including plan and selected add-ons
+  const totalAddOnPrice = selectedAddOns.reduce((total, addOnId) => {
     const addOn = getAddOnDetails(addOnId);
-    return total + parseInt(addOn.price.replace(/[^0-9]/g, ""), 10);
+    return total + parseInt(addOn.price.replace(/[^0-9]/g, ""), 10); // Extract numerical value from price
   }, 0);
+
+  // Ensure price is a number or string before calculating
+  const planPrice = selection.plan ? 
+    (typeof selection.plan.price === "string" ? parseInt(selection.plan.price.replace(/[^0-9]/g, ""), 10) : selection.plan.price) 
+    : 0;
+
+  const totalPrice = totalAddOnPrice + planPrice; // Add plan price with selected add-ons price
 
   return (
     <div className="flex items-center justify-center min-h-screen">
