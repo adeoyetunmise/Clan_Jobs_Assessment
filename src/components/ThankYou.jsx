@@ -19,7 +19,7 @@ const ThankYou = () => {
         {/* Mobile Steps */}
         <div className="lg:hidden w-full relative">
           {/* Mobile Steps Layout */}
-          <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 flex justify-around space-x-4">
+          <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 flex justify-around space-x-4">
             {[1, 2, 3, 4].map((step) => (
               <Link
                 key={step}
@@ -47,10 +47,10 @@ const ThankYou = () => {
           <img
             src="/src/assets/bg-sidebar-desktop.svg" // Desktop Background Image
             alt="Desktop Sidebar"
-            className="rounded-lg object-contain mx-auto"
+            className="rounded-lg object-contain"
           />
           {/* Desktop Steps Layout */}
-          <div className="absolute top-8 left-1/2 transform -translate-x-1/2 flex flex-col space-y-8">
+          <div className="absolute top-8 text-center ml-8 transform  flex flex-col space-y-8">
             {[1, 2, 3, 4].map((step) => (
               <div className="flex items-start space-x-4" key={step}>
                 <Link
