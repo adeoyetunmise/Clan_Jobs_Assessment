@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";  // Import useNavigate
 
 const BigCardForm = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +8,7 @@ const BigCardForm = () => {
     phone: "",
   });
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();  // Initialize useNavigate hook
 
   const validateForm = () => {
     const newErrors = {};
@@ -22,6 +23,7 @@ const BigCardForm = () => {
     e.preventDefault();
     if (validateForm()) {
       alert("Form submitted successfully!");
+      navigate("/select-card");  // Navigate to the SelectCardForm component after form submission
     }
   };
 
@@ -46,7 +48,7 @@ const BigCardForm = () => {
           <div className="absolute top-8 left-8 flex flex-col space-y-8">
             {/* Item 1 */}
             <div className="flex items-start space-x-4">
-              <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
+              <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
                 1
               </button>
               <div>
@@ -57,10 +59,10 @@ const BigCardForm = () => {
 
             {/* Item 2 */}
             <div className="flex items-start space-x-4">
-                <Link to="/select-card">
-              <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
-                2
-              </button>
+              <Link to="/select-card">
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
+                  2
+                </button>
               </Link>
               <div>
                 <p className="text-sm text-left text-gray-300"> STEP 2</p>
@@ -70,10 +72,10 @@ const BigCardForm = () => {
 
             {/* Item 3 */}
             <div className="flex items-start space-x-4">
-                <Link to="/pick-addons">
-              <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
-                3
-              </button>
+              <Link to="/pick-addons">
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
+                  3
+                </button>
               </Link>
               <div>
                 <p className="text-sm text-left text-gray-300"> STEP 3</p>
@@ -83,9 +85,11 @@ const BigCardForm = () => {
 
             {/* Item 4 */}
             <div className="flex items-start space-x-4">
-              <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
-                4
-              </button>
+              <Link to="/finish-up">
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
+                  4
+                </button>
+              </Link>
               <div>
                 <p className="text-sm text-left text-gray-300"> STEP 4</p>
                 <p className="text-sm font-semibold text-white">SUMMARY</p>
@@ -146,7 +150,7 @@ const BigCardForm = () => {
 
             {/* Phone Field */}
             <div>
-              <label className="block text-sm font-medium  text-sky-800 mb-1">
+              <label className="block text-sm font-medium text-sky-800 mb-1">
                 Phone Number
               </label>
               <input

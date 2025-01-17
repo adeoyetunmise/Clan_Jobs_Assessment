@@ -174,3 +174,13 @@ const BigCardForm = () => {
 };
 
 export default BigCardForm;
+
+
+
+i want another component titled FinishingUp, very similar to the BigCardForm, retain the image and the buttons with numbers and the paragraphs there, retain the right section H2 and P, only replace the form with a two div, in the first div, there 3 paragraghs, under the first paragragh, there is a text that says change and is a link after which follows a line, at the far end of the three paragraghs is another paragraph, the second div has one paragraph and at the far end another paragragph.
+
+
+From the codes i have sent, when the user have filled their personal info, and clicked on the next step, which is the "selectcard form, whatever they have picked from the selectcardform and picked in PickAddOn should reflect in the paragraphs of the finishing up
+
+
+From the codes i have sent, when the users gets to the "selectcard form, whatever they have picked from the selectcardform including the yearly and monthly toggle and picked in PickAddOn should reflect in the paragraphs of the finishing up, for example, if the user picks the arcade card and chose monthly then clicks on next step,which takes the user to PickAddOn and then the user picks the online service card, clicks on the next step it takes the user to the finishingUp, i should be able to get the value in the paragraghs respectfully in the finishingUp, it should also calculate the amount and reflect the total

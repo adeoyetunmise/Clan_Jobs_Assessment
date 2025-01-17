@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserSelection } from "../context/UserSelectionContext"; // assuming you're using context for user selection
 
 const PickAddOn = () => {
+  const navigate = useNavigate();
+  const { updateSelection } = useUserSelection();
   const [selectedAddOns, setSelectedAddOns] = useState([]);
 
   const handleToggleAddOn = (addOn) => {
@@ -35,6 +38,17 @@ const PickAddOn = () => {
     },
   ];
 
+  const handleNextStep = () => {
+    if (selectedAddOns.length === 0) {
+      alert("Please select at least one add-on before proceeding.");
+      return;
+    }
+
+    // Update context with selected add-ons
+    updateSelection({ addOns: selectedAddOns });
+    navigate("/finish-up");
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl flex flex-col lg:flex-row">
@@ -50,48 +64,52 @@ const PickAddOn = () => {
           <div className="absolute top-8 left-8 flex flex-col space-y-8">
             {/* Item 1 */}
             <div className="flex items-start space-x-4">
-            <Link to="/">
-              <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
-                1
-              </button>
+              <Link to="/">
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
+                  1
+                </button>
               </Link>
               <div>
-                <p className="text-sm text-left text-gray-300"> STEP 1</p>
+                <p className="text-sm text-left text-gray-300">STEP 1</p>
                 <p className="text-sm font-semibold text-white">YOUR INFO</p>
               </div>
             </div>
 
             {/* Item 2 */}
             <div className="flex items-start space-x-4">
-            <Link to="/select-card">
-              <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
-                2
-              </button>
+              <Link to="/select-card">
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
+                  2
+                </button>
               </Link>
               <div>
-                <p className="text-sm text-left text-gray-300"> STEP 2</p>
+                <p className="text-sm text-left text-gray-300">STEP 2</p>
                 <p className="text-sm font-semibold text-white">SELECT PLAN</p>
               </div>
             </div>
 
             {/* Item 3 */}
             <div className="flex items-start space-x-4">
-              <button className="w-8 h-8 flex items-center justify-center border border-white text-white  rounded-full hover:bg-blue-300 hover:text-black">
-                3
-              </button>
+              <Link to="/pick-addons">
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
+                  3
+                </button>
+              </Link>
               <div>
-                <p className="text-sm text-left text-gray-300"> STEP 3</p>
+                <p className="text-sm text-left text-gray-300">STEP 3</p>
                 <p className="text-sm font-semibold text-white">ADD-ONS</p>
               </div>
             </div>
 
             {/* Item 4 */}
             <div className="flex items-start space-x-4">
-              <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
-                4
-              </button>
+              <Link to="/finish-up">
+                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
+                  4
+                </button>
+              </Link>
               <div>
-                <p className="text-sm text-left text-gray-300"> STEP 4</p>
+                <p className="text-sm text-left text-gray-300">STEP 4</p>
                 <p className="text-sm font-semibold text-white">SUMMARY</p>
               </div>
             </div>
@@ -109,7 +127,9 @@ const PickAddOn = () => {
               <div
                 key={addOn.id}
                 className={`flex items-center justify-between border p-4 rounded-lg cursor-pointer hover:border-blue-500 transition duration-300 ${
-                  selectedAddOns.includes(addOn.id) ? "border-blue-500" : "border-gray-300"
+                  selectedAddOns.includes(addOn.id)
+                    ? "border-blue-500"
+                    : "border-gray-300"
                 }`}
                 onClick={() => handleToggleAddOn(addOn.id)}
               >
@@ -130,16 +150,17 @@ const PickAddOn = () => {
             ))}
           </div>
           <div className="flex flex-row mt-28">
-        <div>
-            <Link to="/" className="">Go Back</Link>
-        </div>
-        <button
-              type="submit"
-              className="text-sm py-2   px-3 bg-sky-800 float-right text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto "
+            <div>
+              <Link to="/select-card" className="">Go Back</Link>
+            </div>
+            <button
+              type="button"
+              onClick={handleNextStep}
+              className="text-sm py-2 px-3 bg-sky-800 float-right text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto"
             >
               Next Step
-        </button>
-    </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
