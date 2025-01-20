@@ -69,7 +69,11 @@ const FinishingUp = () => {
                     : "/finish-up"
                 }
               >
-                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full  hover:bg-blue-300 hover:text-black">
+                <button
+                  className={`w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black ${
+                    step === 4 ? "bg-sky-100 text-black" : ""
+                  }`}
+                >
                   {step}
                 </button>
               </Link>
@@ -101,7 +105,11 @@ const FinishingUp = () => {
                       : "/finish-up"
                   }
                 >
-                  <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
+                  <button
+                    className={`w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black ${
+                      step === 4 ? "bg-sky-100 text-black" : ""
+                    }`}
+                  >
                     {step}
                   </button>
                 </Link>

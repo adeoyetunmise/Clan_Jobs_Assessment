@@ -1,12 +1,24 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useUserSelection } from "../context/UserSelectionContext";
 
 const SelectCardForm = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { updateSelection } = useUserSelection();
   const [isYearly, setIsYearly] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
+
+  // Define steps and map them to routes
+  const steps = [
+    { step: 1, label: "YOUR INFO", path: "/" },
+    { step: 2, label: "SELECT PLAN", path: "/select-card" },
+    { step: 3, label: "ADD-ONS", path: "/pick-addons" },
+    { step: 4, label: "SUMMARY", path: "/finish-up" },
+  ];
+
+  // Get the current step based on the URL path
+  const currentStep = steps.findIndex((s) => s.path === location.pathname) + 1;
 
   const handleToggle = () => {
     setIsYearly(!isYearly);
@@ -42,21 +54,16 @@ const SelectCardForm = () => {
             className="w-full h-auto"
           />
           <div className="absolute inset-x-0 top-4 flex justify-center space-x-4">
-            {[1, 2, 3, 4].map((step) => (
-              <Link
-                key={step}
-                to={
-                  step === 1
-                    ? "/"
-                    : step === 2
-                    ? "/select-card"
-                    : step === 3
-                    ? "/pick-addons"
-                    : "/finish-up"
-                }
-              >
-                <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
-                  {step}
+            {steps.map((stepInfo) => (
+              <Link key={stepInfo.step} to={stepInfo.path}>
+                <button
+                  className={`w-8 h-8 flex items-center justify-center border rounded-full ${
+                    currentStep === stepInfo.step
+                      ? "bg-sky-100 text-black" // Highlight the current step
+                      : "border-white text-white hover:bg-blue-300 hover:text-black"
+                  }`}
+                >
+                  {stepInfo.step}
                 </button>
               </Link>
             ))}
@@ -74,21 +81,25 @@ const SelectCardForm = () => {
             className="rounded-lg object-cover"
           />
           <div className="absolute top-8 left-8 flex flex-col space-y-8">
-            {[1, 2, 3, 4].map((step) => (
-              <div className="flex items-start space-x-4" key={step}>
-                <Link to={step === 1 ? "/" : `/step-${step}`}>
-                  <button className="w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black">
-                    {step}
+            {steps.map((stepInfo) => (
+              <div className="flex items-start space-x-4" key={stepInfo.step}>
+                <Link to={stepInfo.path}>
+                  <button
+                    className={`w-8 h-8 flex items-center justify-center border rounded-full ${
+                      currentStep === stepInfo.step
+                        ? "bg-sky-100 text-black" // Highlight the current step
+                        : "border-white text-white hover:bg-blue-300 hover:text-black"
+                    }`}
+                  >
+                    {stepInfo.step}
                   </button>
                 </Link>
                 <div>
-                  <p className="text-sm text-left text-gray-300">STEP {step}</p>
+                  <p className="text-sm text-left text-gray-300">
+                    STEP {stepInfo.step}
+                  </p>
                   <p className="text-sm font-semibold text-white">
-                    {
-                      ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"][
-                        step - 1
-                      ]
-                    }
+                    {stepInfo.label}
                   </p>
                 </div>
               </div>
