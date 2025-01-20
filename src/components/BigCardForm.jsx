@@ -11,7 +11,7 @@ const BigCardForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Define steps and map them to routes
+  
   const steps = [
     { step: 1, label: "YOUR INFO", path: "/" },
     { step: 2, label: "SELECT PLAN", path: "/select-card" },
@@ -19,7 +19,7 @@ const BigCardForm = () => {
     { step: 4, label: "SUMMARY", path: "/finish-up" },
   ];
 
-  // Get the current step based on the URL path
+  
   const currentStep = steps.findIndex((s) => s.path === location.pathname) + 1;
 
   const validateForm = () => {
@@ -63,7 +63,7 @@ const BigCardForm = () => {
                 <button
                   className={`w-8 h-8 flex items-center justify-center border rounded-full ${
                     currentStep === stepInfo.step
-                      ? "bg-sky-100 text-black" // Highlight the current step
+                      ? "bg-sky-100 text-black" 
                       : "border-white text-white hover:bg-blue-300 hover:text-black"
                   }`}
                 >
@@ -93,7 +93,7 @@ const BigCardForm = () => {
                   <button
                     className={`w-8 h-8 flex items-center justify-center border rounded-full ${
                       currentStep === stepInfo.step
-                        ? "bg-sky-100 text-black" // Highlight the current step
+                        ? "bg-sky-100 text-black" 
                         : "border-white text-white hover:bg-blue-300 hover:text-black"
                     }`}
                   >
