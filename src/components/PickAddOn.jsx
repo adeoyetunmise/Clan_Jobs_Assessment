@@ -7,6 +7,10 @@ const PickAddOn = () => {
   const { updateSelection } = useUserSelection();
   const [selectedAddOns, setSelectedAddOns] = useState([]);
 
+  const handleGoBack = () => {
+    navigate("/select-card");  
+  };
+
   const handleToggleAddOn = (addOn) => {
     setSelectedAddOns((prev) => {
       if (prev.includes(addOn)) {
@@ -110,7 +114,7 @@ const PickAddOn = () => {
                 >
                   <button
                     className={`w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black ${
-                      step === 3 ? "bg-sky-100 text-black" : ""
+                      step === 3 ? "bg-white text-black" : ""
                     }`}
                   >
                     {step}
@@ -176,14 +180,18 @@ const PickAddOn = () => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex flex-row mt-10">
-            <Link to="/select-card" className="text-sm text-gray-600">
+          <div className="flex justify-between mt-24 relative z-10">
+            <button
+              type="button"
+              onClick={handleGoBack}
+              className="text-sm py-2 px-4 text-sky-800 font-medium rounded-lg    focus:text-blue-500"
+            >
               Go Back
-            </Link>
+            </button>
             <button
               type="button"
               onClick={handleNextStep}
-              className="text-sm py-2 px-3 bg-sky-800 text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto"
+              className="text-sm py-2 px-4 bg-sky-800 text-white font-medium rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
             >
               Next Step
             </button>

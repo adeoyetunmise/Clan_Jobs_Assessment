@@ -9,7 +9,9 @@ const SelectCardForm = () => {
   const [isYearly, setIsYearly] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
 
-  
+  const handleGoBack = () => {
+    navigate("/"); 
+  };
   const steps = [
     { step: 1, label: "YOUR INFO", path: "/" },
     { step: 2, label: "SELECT PLAN", path: "/select-card" },
@@ -27,6 +29,8 @@ const SelectCardForm = () => {
   const handlePlanSelect = (plan) => {
     setSelectedPlan(plan);
   };
+
+ 
 
   const handleNextStep = () => {
     if (!selectedPlan) {
@@ -191,18 +195,25 @@ const SelectCardForm = () => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex flex-row mt-10">
-            <Link to="/" className="text-sm text-gray-600">
-              Go Back
-            </Link>
-            <button
-              type="button"
-              onClick={handleNextStep}
-              className="text-sm py-2 px-3 bg-sky-800 float-right text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto"
-            >
-              Next Step
-            </button>
-          </div>
+          <div className="flex justify-between mt-24 relative z-10">
+  <button
+    type="button"
+    onClick={handleGoBack}
+    className="text-sm py-2 px-4 text-sky-800 font-medium rounded-lg    focus:text-blue-500"
+  >
+    Go Back
+  </button>
+  <button
+    type="button"
+    onClick={handleNextStep}
+    className="text-sm py-2 px-4 bg-sky-800 text-white font-medium rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+  >
+    Next Step
+  </button>
+</div>
+
+
+
         </div>
       </div>
     </div>
