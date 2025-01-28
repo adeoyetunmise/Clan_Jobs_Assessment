@@ -10,7 +10,7 @@ const SelectCardForm = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
 
   const handleGoBack = () => {
-    navigate("/"); 
+    navigate("/");
   };
   const steps = [
     { step: 1, label: "YOUR INFO", path: "/" },
@@ -19,7 +19,6 @@ const SelectCardForm = () => {
     { step: 4, label: "SUMMARY", path: "/finish-up" },
   ];
 
-  
   const currentStep = steps.findIndex((s) => s.path === location.pathname) + 1;
 
   const handleToggle = () => {
@@ -29,8 +28,6 @@ const SelectCardForm = () => {
   const handlePlanSelect = (plan) => {
     setSelectedPlan(plan);
   };
-
- 
 
   const handleNextStep = () => {
     if (!selectedPlan) {
@@ -63,7 +60,7 @@ const SelectCardForm = () => {
                 <button
                   className={`w-8 h-8 flex items-center justify-center border rounded-full ${
                     currentStep === stepInfo.step
-                      ? "bg-sky-100 text-black" 
+                      ? "bg-sky-100 text-black"
                       : "border-white text-white hover:bg-blue-300 hover:text-black"
                   }`}
                 >
@@ -91,7 +88,7 @@ const SelectCardForm = () => {
                   <button
                     className={`w-8 h-8 flex items-center justify-center border rounded-full ${
                       currentStep === stepInfo.step
-                        ? "bg-sky-100 text-black" 
+                        ? "bg-sky-100 text-black"
                         : "border-white text-white hover:bg-blue-300 hover:text-black"
                     }`}
                   >
@@ -196,24 +193,21 @@ const SelectCardForm = () => {
 
           {/* Navigation Buttons */}
           <div className="flex justify-between mt-24 relative z-10">
-  <button
-    type="button"
-    onClick={handleGoBack}
-    className="text-sm py-2 px-4 text-sky-800 font-medium rounded-lg    focus:text-blue-500"
-  >
-    Go Back
-  </button>
-  <button
-    type="button"
-    onClick={handleNextStep}
-    className="text-sm py-2 px-4 bg-sky-800 text-white font-medium rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
-  >
-    Next Step
-  </button>
-</div>
-
-
-
+            <button
+              type="button"
+              onClick={handleGoBack}
+              className="text-sm py-2 px-4 text-sky-800 font-medium rounded-lg    focus:text-blue-500"
+            >
+              Go Back
+            </button>
+            <button
+              type="button"
+              onClick={handleNextStep}
+              className="text-sm py-2 px-4 bg-sky-800 text-white font-medium rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            >
+              Next Step
+            </button>
+          </div>
         </div>
       </div>
     </div>

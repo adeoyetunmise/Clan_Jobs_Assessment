@@ -8,7 +8,7 @@ const PickAddOn = () => {
   const [selectedAddOns, setSelectedAddOns] = useState([]);
 
   const handleGoBack = () => {
-    navigate("/select-card");  
+    navigate("/select-card");
   };
 
   const handleToggleAddOn = (addOn) => {
@@ -77,12 +77,12 @@ const PickAddOn = () => {
                 }
               >
                 <button
-                  className={`w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black ${
-                    step === 3 ? "bg-sky-100 text-black" : ""
-                  }`}
-                >
-                  {step}
-                </button>
+                    className={`w-8 h-8 flex items-center justify-center border border-white ${
+                      step === 3 ? "bg-sky-100 text-black" : "text-white"
+                    } rounded-full`}
+                  >
+                    {step}
+                  </button>
               </Link>
             ))}
           </div>
@@ -113,9 +113,9 @@ const PickAddOn = () => {
                   }
                 >
                   <button
-                    className={`w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black ${
-                      step === 3 ? "bg-white text-black" : ""
-                    }`}
+                    className={`w-8 h-8 flex items-center justify-center border border-white ${
+                      step === 3 ? "bg-sky-100 text-black" : "text-white"
+                    } rounded-full`}
                   >
                     {step}
                   </button>
@@ -180,7 +180,7 @@ const PickAddOn = () => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between mt-24 relative z-10">
+          <div className="flex justify-between mt-28 relative z-10">
             <button
               type="button"
               onClick={handleGoBack}

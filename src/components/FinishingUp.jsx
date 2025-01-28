@@ -41,6 +41,10 @@ const FinishingUp = () => {
 
   const navigate = useNavigate();
 
+  const handleGoBack = () => {
+    navigate("/pick-addons");
+  };
+
   const handleConfirm = () => {
     navigate("/thank-you");
   };
@@ -56,29 +60,30 @@ const FinishingUp = () => {
             className="w-full h-auto"
           />
           <div className="absolute inset-x-0 top-4 flex justify-center space-x-4">
-            {[1, 2, 3, 4].map((step) => (
-              <Link
-                key={step}
-                to={
-                  step === 1
-                    ? "/"
-                    : step === 2
-                    ? "/select-card"
-                    : step === 3
-                    ? "/pick-addons"
-                    : "/finish-up"
-                }
-              >
-                <button
-                  className={`w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black ${
-                    step === 4 ? "bg-sky-100 text-black" : ""
-                  }`}
-                >
-                  {step}
-                </button>
-              </Link>
-            ))}
-          </div>
+  {[1, 2, 3, 4].map((step) => (
+    <Link 
+      key={step} 
+      to={
+        step === 1 
+          ? "/" 
+          : step === 2 
+            ? "/select-card" 
+            : step === 3 
+              ? "/pick-addons" 
+              : "/finish-up" 
+      }
+    >
+      <button 
+        className={`w-8 h-8 flex items-center justify-center border border-white rounded-full 
+                   hover:bg-blue-300 ${ 
+                     step === 4 ? "bg-sky-100 text-black" : "text-white" 
+                   }`}
+      >
+        {step}
+      </button>
+    </Link>
+  ))}
+</div>
         </div>
       </div>
 
@@ -105,13 +110,14 @@ const FinishingUp = () => {
                       : "/finish-up"
                   }
                 >
-                  <button
-                    className={`w-8 h-8 flex items-center justify-center border border-white text-white rounded-full hover:bg-blue-300 hover:text-black ${
-                      step === 4 ? "bg-sky-100 text-black" : ""
-                    }`}
-                  >
-                    {step}
-                  </button>
+                  <button 
+        className={`w-8 h-8 flex items-center justify-center border border-white rounded-full 
+                   hover:bg-blue-300 ${ 
+                     step === 4 ? "bg-sky-100 text-black" : "text-white" 
+                   }`}
+      >
+        {step}
+      </button>
                 </Link>
                 <div>
                   <p className="text-sm text-gray-300">STEP {step}</p>
@@ -143,14 +149,14 @@ const FinishingUp = () => {
               <p className="text-sm font-semibold text-gray-800">
                 {selection.plan?.name}
               </p>
-              <p className="text-sm font-semibold text-gray-800">
+              <p className="text-sm font-bold text-gray-800">
                 ${selection.plan?.price}/
                 {selection.plan?.type === "Yearly" ? "yr" : "mo"}
               </p>
             </div>
             <Link
               to="/select-card"
-              className="text-blue-600 text-sm hover:underline"
+              className="text-blue-600 text-sm hover:underline relative z-10"
             >
               Change
             </Link>
@@ -166,7 +172,7 @@ const FinishingUp = () => {
                     key={addOnId}
                     className="flex justify-between items-start"
                   >
-                    <p className="text-sm font-semibold text-gray-800">
+                    <p className="text-sm font-semibold text-gray-500">
                       {addOn.title}
                     </p>
                     <p className="text-sm font-semibold text-gray-800">
@@ -182,21 +188,25 @@ const FinishingUp = () => {
 
           {/* Total Price */}
           <div className="flex justify-between border-t border-gray-300 pt-4">
-            <p className="text-sm font-semibold text-gray-800">
+            <p className="text-sm font-semibold text-gray-500">
               Total (per month)
             </p>
-            <p className="text-lg font-bold text-gray-900">+${totalPrice}/mo</p>
+            <p className="text-lg font-bold text-blue-700">+${totalPrice}/mo</p>
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex flex-row mt-10">
-            <Link to="/pick-addons" className="text-sm text-gray-600">
+          <div className="flex justify-between mt-48 relative z-10">
+            <button
+              type="button"
+              onClick={handleGoBack}
+              className="text-sm py-2 px-4 text-sky-800 font-medium rounded-lg    focus:text-blue-500"
+            >
               Go Back
-            </Link>
+            </button>
             <button
               type="button"
               onClick={handleConfirm}
-              className="text-sm py-2 px-3 bg-sky-800 text-white font-medium rounded-lg hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-auto"
+              className="text-sm py-2 px-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
             >
               Confirm
             </button>
