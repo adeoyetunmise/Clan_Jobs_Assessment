@@ -113,7 +113,7 @@ const PickAddOn = () => {
                   }
                 >
                   <button
-                    className={`w-8 h-8 flex items-center justify-center border border-white ${
+                    className={`w-8 h-8 flex items-center justify-center border hover:bg-blue-300 hover:text-black border-white ${
                       step === 3 ? "bg-sky-100 text-black" : "text-white"
                     } rounded-full`}
                   >

@@ -112,7 +112,7 @@ const FinishingUp = () => {
                 >
                   <button 
         className={`w-8 h-8 flex items-center justify-center border border-white rounded-full 
-                   hover:bg-blue-300 ${ 
+                   hover:bg-blue-300 hover:text-black ${ 
                      step === 4 ? "bg-sky-100 text-black" : "text-white" 
                    }`}
       >
